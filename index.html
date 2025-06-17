@@ -21,21 +21,11 @@ limitations under the License.
   <meta name="keywords" content="neural networks,machine learning,javascript">
 
   <meta property="og:type" content="article"/>
-  <meta property="og:title" content="ニューラルネットワーク Playground - Deep Insider"/>
-  <meta property="og:description" content="ニューラル ネットワークに、いますぐブラウザー上で触れてみよう！">
-  <meta property="og:url" content="https://deepinsider.github.io/playground/"/>
-  <meta property="og:image" content="https://deepinsider.github.io/playground/preview.png"/>
-
-  <meta name="twitter:card" value="summary_large_image">
-  <meta name="twitter:title" content="ニューラルネットワーク Playground - Deep Insider">
-  <meta name="twitter:description" content="ニューラル ネットワークに、いますぐブラウザー上で触れてみよう！">
-  <meta name="twitter:url" content="https://deepinsider.github.io/playground/">
-  <meta name="twitter:image" content="https://deepinsider.github.io/playground/preview.png">
-  <meta name="twitter:image:width" content="560">
-  <meta name="twitter:image:height" content="295">
+  <meta property="og:title" content="ニューラルネットワーク Playground"/>
+  <meta property="og:description" content="AIのしくみを体験">
 
   <meta name="author" content="Daniel Smilkov and Shan Carter">
-  <title>ニューラルネットワーク Playground - Deep Insider</title>
+  <title>ニューラルネットワークを作ってみましょう！</title>
   <link rel="stylesheet" href="bundle.css" type="text/css">
   <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500|Material+Icons" rel="stylesheet" type="text/css">
   <script src="lib.js"></script>
@@ -54,7 +44,6 @@ limitations under the License.
 <body>
   <!-- Header -->
   <header>
-<!--<h1 class="l--page"><b>ニューラル ネットワーク</b> に、<span class="optional">いますぐ</span>ブラウザー上で触れてみよう！<br>大丈夫、壊れたりしないから。好きにいじってみてね。</h1>-->
     <h1 class="l--page">AIのしくみを体験：<b>ニューラルネットワーク</b>を作ってみましょう！</h1>
   </header>
 
@@ -64,9 +53,9 @@ limitations under the License.
   <div id="top-controls">
 
     <div class="container l--page ui-tlabel">
-      <div class="ui-cnum4"><span class="da-ref-123">4</span> “手法” の選択： モデルの定義 </div>
-      <div class="ui-cnum5"><span class="da-ref-123">5</span> “学習方法” の設計： モデルの生成</div>
-      <div class="ui-cnum6"><span class="da-ref-123">6</span> 学習 ： トレーニング</div>
+      <div class="ui-cnum4"><span class="da-ref-123">4</span>モデルの定義</div>
+      <div class="ui-cnum5"><span class="da-ref-123">5</span>学習方法の設計</div>
+      <div class="ui-cnum6"><span class="da-ref-123">6</span>学習の実行</div>
     </div>
 
     <div class="container l--page">
@@ -206,7 +195,7 @@ limitations under the License.
       </div>
 
       <div class="control ui-epoch timeline-controls">
-        <span class="label">エポック（Epoch）</span>
+        <span class="label">学習回数（Epoch）</span>
         <span class="value" id="iter-number"></span>
       </div>
 
@@ -271,7 +260,7 @@ limitations under the License.
           <span class="da-ref-123 ui-cnum3">3</span> <span>前処理</span>
         </h4>
         <div class="ui-percTrainData">
-          <label for="percTrainData">データの何％を訓練<span class="ui-description">【Training】</span>用に？ <span class="ui-description">(残りは精度検証【Validation】用) </span>:&nbsp;&nbsp;<span class="value">XX</span>％</label>
+          <label for="percTrainData">データの何％を訓練<span class="ui-description"></span>用に？ <span class="ui-description">(残りは精度検証用) </span>:&nbsp;&nbsp;<span class="value">XX</span>％</label>
           <p class="slider">
             <input class="mdl-slider mdl-js-slider" type="range" id="percTrainData" min="10" max="90" step="10">
           </p>
@@ -283,7 +272,7 @@ limitations under the License.
           </p>
         </div>
         <button class="basic-button" id="data-regen-button" title="データの再生成">
-          データの再生成
+          データを再生成
         </button>
       </div>
 
@@ -294,7 +283,7 @@ limitations under the License.
       <h4>
         <span>入力層</span>
       </h4>
-      <p class="ui-description"><b>入力データ</b>として使いたい<b>特徴</b>を選択してください。</p>
+      <p class="ui-description">ネットワークの入力として使いたい<b>特徴量</b>を選んでください。</p>
       <div id="network">
         <svg id="svg" width="510" height="450">
           <defs>
@@ -305,8 +294,8 @@ limitations under the License.
         </svg>
         <!-- Hover card -->
         <div id="hovercard">
-          <div style="font-size:10px">クリックすると、値を手動で編集できます。</div>
-          <div><span class="type">重み／バイアス</span> は <span class="value">0.2</span><span><input type="number"/></span> 。</div>
+          <div>この<span class="type">重み／バイアス</span> は <span class="value">0.2</span><span><input type="number"/></span></div>
+          <div style="font-size:10px">クリックすると値を編集できます</div>
         </div>
         <div class="callout thumbnail ui-description">
           <svg viewBox="0 0 30 30">
@@ -318,7 +307,7 @@ limitations under the License.
             <path d="M12,30C5,20 2,15 12,0" marker-end="url(#arrow)">
           </svg>
           <div class="label">
-            これは、この <b>ニューロン (neuron)</b> の出力内容です。マウスを載せると、右の出力の場所に拡大します。
+            この <b>ニューロンの出力</b> が、各座標点が入力されたとき，どんな値になるかを一覧表示しています。マウスを重ねると、右に拡大表示します。
           </div>
         </div>
         <div class="callout weights ui-description">
@@ -331,7 +320,7 @@ limitations under the License.
             <path d="M12,30C5,20 2,15 12,0" marker-end="url(#arrow)">
           </svg>
           <div class="label">
-            出力は、変化する <b>重み</b> と合成されます。重み (weights) は、線の太さで示されています。
+            各ニューロンの出力は、<b>重み</b> を通じて伝搬します。重みの大きさは、線の太さと色で示されています。
           </div>
         </div>
       </div>
@@ -389,7 +378,7 @@ limitations under the License.
 
           <!-- Gradient color scale -->
           <div class="colorscalelabel">
-            データ ／ ニューロン (neurons) ／ 重み の値を色で表現。
+            データ／ニューロン／重みの値を表す色
           </div>
           <svg width="150" height="30" id="colormap">
             <defs>
@@ -447,10 +436,9 @@ limitations under the License.
 
   <!-- More -->
   <div class="more">
-    <!-- <button class="mdl-button mdl-js-button mdl-button--icon"><i class="material-icons">keyboard_arrow_down</i></button> -->
   </div>
-  <!-- Article -->
 
+  <!-- Article -->
   <article id="article-text">
   </article>
 
